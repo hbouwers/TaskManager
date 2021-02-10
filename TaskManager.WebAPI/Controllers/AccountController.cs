@@ -13,6 +13,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
+using TaskManager.Data;
 using TaskManager.WebAPI.Models;
 using TaskManager.WebAPI.Providers;
 using TaskManager.WebAPI.Results;
