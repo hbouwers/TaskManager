@@ -10,6 +10,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using TaskManager.WebAPI.Providers;
 using TaskManager.WebAPI.Models;
+using TaskManager.Data;
 
 namespace TaskManager.WebAPI
 {
