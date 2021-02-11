@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TaskManger.Services
+namespace TaskManager.Services
 {
-    public class NoteService
+    class NoteService
     {
     }
 }
