@@ -325,10 +325,6 @@
       <Project>{ffa4de1b-0346-4ca8-9274-33babe42da4a}</Project>
       <Name>TaskManager.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TaskManger.Services\TaskManger.Services.csproj">
-      <Project>{1ec4fb42-2548-4880-84af-5b1198dc5892}</Project>
-      <Name>TaskManger.Services</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
