@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TaskManager.Services
 {
-    class NoteService
+    public class NoteService
     {
     }
 }
