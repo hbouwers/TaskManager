@@ -8,5 +8,6 @@ namespace TaskManager.Services
 {
     public class NoteService
     {
+        public int Id { get; set; }
     }
 }
