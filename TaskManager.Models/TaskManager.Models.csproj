@@ -54,11 +54,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activity\ActivityCreate.cs" />
+    <Compile Include="Activity\ActivityListItem.cs" />
+    <Compile Include="Category\CategoryCreate.cs" />
+    <Compile Include="Category\CategoryListItem.cs" />
+    <Compile Include="Note\NoteCreate.cs" />
+    <Compile Include="Note\NoteListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
