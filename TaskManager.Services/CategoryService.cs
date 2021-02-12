@@ -8,5 +8,6 @@ namespace TaskManager.Services
 {
     public class CategoryService
     {
+        public int CatId { get; set; }
     }
 }

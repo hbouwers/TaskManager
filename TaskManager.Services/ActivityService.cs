@@ -8,6 +8,6 @@ namespace TaskManager.Services
 {
     public class ActivityService
     {
-        //will this work....
+        public int Id { get; set; }
     }
 }
