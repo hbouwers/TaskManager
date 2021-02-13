@@ -8,6 +8,18 @@ namespace TaskManager.Services
 {
     public class NoteService
     {
-        public int Id { get; set; }
+
+        private readonly Guid _userId;
+
+        public NoteService(Guid userId)
+        {
+            _userId = userId;
+        }
+
+        //public bool CreateNote(NoteCreate model)
+        //{
+
+        //}
+
     }
 }

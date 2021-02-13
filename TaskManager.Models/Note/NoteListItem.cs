@@ -8,5 +8,8 @@ namespace TaskManager.Models.Note
 {
     public class NoteListItem
     {
+        public string Text { get; set; }
+
+        public Guid UserId { get; set; }
     }
 }
