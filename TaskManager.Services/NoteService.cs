@@ -8,6 +8,7 @@ namespace TaskManager.Services
 {
     public class NoteService
     {
+
         private readonly Guid _userId;
 
         public NoteService(Guid userId)
@@ -19,5 +20,6 @@ namespace TaskManager.Services
         //{
 
         //}
+
     }
 }
