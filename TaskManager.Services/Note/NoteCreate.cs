@@ -5,19 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TaskManager.Models
+namespace TaskManager.Models.Note
 {
-    public class ActivityListItem
+    public class NoteCreate
     {
-
-
-        public Guid ActivityId { get; set; }
-
         [Required]
-        public string Title { get; set; }
-
+        public string Text { get; set; }
+        
         [Required]
-        public string Description { get; set; }
-
+        public int ActivityId { get; set; }
     }
 }

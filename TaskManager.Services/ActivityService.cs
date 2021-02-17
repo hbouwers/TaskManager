@@ -24,9 +24,10 @@ namespace TaskManager.Services
             var entity =
                 new Activity()
                 {
-                    UserId = _userdId, 
+                    UserId = _userdId,
                     Title = model.Title,
-                    CreatedUtc = DateTimeOffset.Now
+                    Description = model.Description,
+
 
                 };
 
@@ -36,11 +37,65 @@ namespace TaskManager.Services
                 ctx.Activities.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
+        }
+
+
+     public  IEnumerable<ActivityListItem> GetActivityByUser()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = 
+                    ctx 
+                    .Activities
+                    .Where(e => e.UserId == _userdId)
+                    .Select(
+                        e =>
+                        new ActivityListItem
+                        {
+
+
+
+
+                        }
+                        
+                        
+                        
+                        
+                        
+                        )
+
+
+
+
+
+
+
+
+            }
+
+
+
+
+
+
+
+
 
 
         }
 
+
+
+
+
+
+
+
+
+
         
+
+
 
 
 

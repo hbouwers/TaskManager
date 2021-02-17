@@ -12,7 +12,7 @@ namespace TaskManager.Data
     {
 
         [Key]
-        public Guid ActivityId { get; set; }
+        public int ActivityId { get; set; }
 
         [ForeignKey(nameof(Category))]
         public Guid CategoryId { get; set; }
