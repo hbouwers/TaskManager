@@ -11,8 +11,5 @@ namespace TaskManager.Models.Note
     {
         [Required]
         public string Text { get; set; }
-        
-        [Required]
-        public int ActivityId { get; set; }
     }
 }
