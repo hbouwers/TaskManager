@@ -59,6 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activity\ActivityCreate.cs" />
+    <Compile Include="Activity\ActivityDetail.cs" />
+    <Compile Include="Activity\ActivityEdit.cs" />
     <Compile Include="Activity\ActivityListItem.cs" />
     <Compile Include="Category\CategoryCreate.cs" />
     <Compile Include="Category\CategoryListItem.cs" />
