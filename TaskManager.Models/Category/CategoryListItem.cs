@@ -8,5 +8,10 @@ namespace TaskManager.Models.Category
 {
     public class CategoryListItem
     {
+        public int CategoryId { get; set; }
+
+        public string Title { get; set; }
+
+        public string Description { get; set; }
     }
 }
