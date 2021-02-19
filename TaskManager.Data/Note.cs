@@ -30,7 +30,7 @@ namespace TaskManager.Data
         public virtual Category Category { get; set; }
 
         [ForeignKey(nameof(ApplicationUser))]
-        public string UserId { get; set; }
+        public Guid UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
     }
 }

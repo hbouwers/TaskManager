@@ -9,6 +9,9 @@ namespace TaskManager.Models.Note
 {
     public class NoteListItem
     {
+        [Key]
+        public int NoteId { get; set; }
+
         [Required]
         public string Text { get; set; }
     }
