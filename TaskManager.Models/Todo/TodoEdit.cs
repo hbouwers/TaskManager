@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace TaskManager.Models.Todo
 {
-    public class TodoListItem
+    public class TodoEdit
     {
         public int TodoId { get; set; }
-        public string Title { get; set; }
         public DateTime DueDate { get; set; }
         public bool Complete { get; set; }
+
+        [ForeignKey(nameof(Activity))]
+        public int ActivityId { get; set; }
+        public virtual Activity Activity { get; set; }
     }
 }

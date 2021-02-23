@@ -12,20 +12,23 @@ namespace TaskManager.Data
     {
         [Key]
         public int NoteId { get; set; }
+
+        [Required]
         public string Text { get; set; }
-        public string Title { get; set; }
-        public bool IsComplete { get; set; }
-        public DateTime DueDate { get; set; }
         public DateTimeOffset CreatedUtc { get; set; }
 
         [ForeignKey(nameof (Activity))]
         public int ActivityId { get; set; }
         public virtual Activity Activity { get; set; }
 
+        [ForeignKey(nameof(Todo))]
+        public int TodoId { get; set; }
+        public virtual Todo Todo { get; set; }
 
-        //--------------------------------//
-        // not 100% sure this is correct?//
-        
+        [ForeignKey(nameof(Category))]
+        public int CategoryId { get; set; }
+        public virtual Category Category { get; set; }
+
         [ForeignKey(nameof(ApplicationUser))]
         public Guid UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
