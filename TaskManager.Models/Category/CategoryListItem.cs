@@ -7,6 +7,16 @@ using System.Threading.Tasks;
 
 namespace TaskManager.Models.Category
 {
+<<<<<<< HEAD
+    public class CategoryListItem
+    {
+        public int CategoryId { get; set; }
+
+        public string Title { get; set; }
+
+        public string Description { get; set; }
+    }
+=======
    
        
 
@@ -19,4 +29,5 @@ namespace TaskManager.Models.Category
 
 
     
+>>>>>>> b52abc1b274b040c2ccedf64eaf342a89667fe58
 }

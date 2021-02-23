@@ -63,6 +63,8 @@
     <Compile Include="Activity\ActivityEdit.cs" />
     <Compile Include="Activity\ActivityListItem.cs" />
     <Compile Include="Category\CategoryCreate.cs" />
+    <Compile Include="Category\CategoryDetail.cs" />
+    <Compile Include="Category\CategoryEdit.cs" />
     <Compile Include="Category\CategoryListItem.cs" />
     <Compile Include="Note\NoteCreate.cs" />
     <Compile Include="Note\NoteDetail.cs" />
