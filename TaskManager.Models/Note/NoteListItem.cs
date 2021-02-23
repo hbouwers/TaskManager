@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,8 +9,10 @@ namespace TaskManager.Models.Note
 {
     public class NoteListItem
     {
-        public string Text { get; set; }
+        [Key]
+        public int NoteId { get; set; }
 
-        public Guid UserId { get; set; }
+        [Required]
+        public string Text { get; set; }
     }
 }

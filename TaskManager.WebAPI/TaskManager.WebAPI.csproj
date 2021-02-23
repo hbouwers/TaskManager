@@ -329,7 +329,7 @@
       <Name>TaskManager.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\TaskManager.Services\TaskManager.Services.csproj">
-      <Project>{B1893F71-517F-4994-9ADF-6E01309A341C}</Project>
+      <Project>{b1893f71-517f-4994-9adf-6e01309a341c}</Project>
       <Name>TaskManager.Services</Name>
     </ProjectReference>
   </ItemGroup>
