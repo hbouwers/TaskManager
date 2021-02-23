@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TaskManager.Models.Activity
+namespace TaskManager.Models.Note
 {
-   public class ActivityEdit
+    public class NoteCreate
     {
+        [Required]
+        public string Text { get; set; }
+        
+        [Required]
         public int ActivityId { get; set; }
-                
-        public string Title { get; set; }
-                
-        public string Description { get; set; }
     }
 }
