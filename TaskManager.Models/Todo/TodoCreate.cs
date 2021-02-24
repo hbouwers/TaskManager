@@ -7,13 +7,15 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskManager.Data;
 
-namespace TaskManager.Models.Note
+namespace TaskManager.Models.Todo
 {
-    public class NoteCreate
+    public class TodoCreate
     {
         [Required]
-        [MinLength(2, ErrorMessage = "Please enter at least 2 characters")]
-        [MaxLength(40, ErrorMessage = "Please enter less than 40 characters")]
-        public string Text { get; set; }
+        public DateTime DueDate { get; set; }
+
+        [ForeignKey(nameof(Activity))]
+        public int ActivityId { get; set; }
+        public virtual Activity Activity { get; set; }
     }
 }
