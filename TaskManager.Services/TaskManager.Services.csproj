@@ -61,8 +61,6 @@
     <Compile Include="ActivityService.cs" />
     <Compile Include="CategoryService.cs" />
     <Compile Include="NoteService.cs" />
-    <Compile Include="Note\NoteCreate.cs" />
-    <Compile Include="Note\NoteListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TodoService.cs" />
   </ItemGroup>
