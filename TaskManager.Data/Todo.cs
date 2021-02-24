@@ -8,25 +8,23 @@ using System.Threading.Tasks;
 
 namespace TaskManager.Data
 {
-    public class Activity
+    public class Todo
     {
-
         [Key]
+        public int TodoId { get; set; }
+
+        [ForeignKey(nameof(Activity))]
         public int ActivityId { get; set; }
 
-        [ForeignKey(nameof(Category))]
-        public Guid CategoryId { get; set; }
-        public virtual Category Category { get; set; }
+        public virtual Activity Activity { get; set; }
 
         [Required]
         public Guid UserId { get; set; }
 
         [Required]
-        public string Title { get; set; }
+        public DateTime DueDate { get; set; }
 
         [Required]
-        public string Description { get; set; }
-
-        
+        public bool Complete { get; set; }
     }
 }
