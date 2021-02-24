@@ -72,11 +72,7 @@
       <Name>TaskManager.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\TaskManager.Models\TaskManager.Models.csproj">
-<<<<<<< HEAD
       <Project>{ffa4de1b-0346-4ca8-9274-33babe42da4a}</Project>
-=======
-      <Project>{FFA4DE1B-0346-4CA8-9274-33BABE42DA4A}</Project>
->>>>>>> b52abc1b274b040c2ccedf64eaf342a89667fe58
       <Name>TaskManager.Models</Name>
     </ProjectReference>
   </ItemGroup>
