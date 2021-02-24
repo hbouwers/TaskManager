@@ -15,6 +15,6 @@ namespace TaskManager.Models.Todo
 
         [ForeignKey(nameof(Activity))]
         public int ActivityId { get; set; }
-        public virtual Activity Activity { get; set; }
+        public virtual Data.Activity Activity { get; set; }
     }
 }
