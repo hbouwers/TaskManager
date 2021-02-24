@@ -18,7 +18,8 @@ namespace TaskManager.Models.Note
         [MaxLength(40, ErrorMessage = "Please enter less than 40 characters")]
         public string Text { get; set; }
 
-        [Display(Name ="Created")]
+        [Display(Name = "Created")]
+
         public DateTimeOffset CreatedUtc { get; set; }
 
         [ForeignKey(nameof(Activity))]
@@ -29,10 +30,9 @@ namespace TaskManager.Models.Note
         public int TodoId { get; set; }
         public virtual Data.Todo Todo { get; set; }
 
-
         [ForeignKey(nameof(Category))]
         public int CategoryId { get; set; }
-        // public virtual Category Category { get; set; }
+        //public virtual Category Category { get; set; }
 
         [ForeignKey(nameof(ApplicationUser))]
         public string UserId { get; set; }

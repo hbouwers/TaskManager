@@ -26,7 +26,7 @@ namespace TaskManager.Models.Note
 
         [ForeignKey(nameof(Todo))]
         public int TodoId { get; set; }
-       // public virtual Todo Todo { get; set; }
+       public virtual Data.Todo Todo { get; set; }
 
         [ForeignKey(nameof(Category))]
         public int CategoryId { get; set; }
