@@ -11,9 +11,11 @@ namespace TaskManager.Services
     public class NoteService
     {
 
-        private readonly Guid _userId;
+       // private readonly Guid _userId;
+        private readonly string _userId;
 
-        public NoteService(Guid userId)
+      //  public NoteService(Guid userId)
+        public NoteService(string userId)
         {
             _userId = userId;
         }

@@ -69,7 +69,8 @@ namespace TaskManager.WebAPI.Controllers
 
         private NoteService CreateNoteService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
+           // var userId = Guid.Parse(User.Identity.GetUserId());
+            var userId = (User.Identity.GetUserId());
             var noteService = new NoteService(userId);
             return noteService;
         }

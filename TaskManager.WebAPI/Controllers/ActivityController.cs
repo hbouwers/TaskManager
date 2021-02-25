@@ -12,24 +12,20 @@ namespace TaskManager.WebAPI.Controllers
 {
     public class ActivityController : ApiController
     {
-
         private ActivityService CreateActivityServices()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
+          //  var userId = Guid.Parse(User.Identity.GetUserId());
+            var userId = int.Parse(User.Identity.GetUserId());
             var activityService = new ActivityService(userId);
             return activityService;
-
         }
-
 
         public  IHttpActionResult Get()
         {
             ActivityService activitySerivce = CreateActivityServices();
             var activities = activitySerivce.GetActivitiesByUser();
             return Ok(activities);
-
         }
-
 
         public IHttpActionResult Put(ActivityEdit activity)
         {
@@ -44,7 +40,6 @@ namespace TaskManager.WebAPI.Controllers
             return Ok();
         }
 
-
         public IHttpActionResult Delete(int id)
         {
             var service = CreateActivityServices();
@@ -53,9 +48,6 @@ namespace TaskManager.WebAPI.Controllers
                 return InternalServerError();
 
             return Ok();
-
         }
-
-
     }
 }

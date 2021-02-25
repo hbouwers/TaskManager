@@ -11,11 +11,11 @@ namespace TaskManager.Services
 {
     public class ActivityService
     {
-        private readonly Guid _userId;
-
-        public ActivityService(Guid userId)
+       // private readonly Guid _userId;
+        private readonly int _userId;
+       // public ActivityService(Guid userId)
+        public ActivityService(int userId)
         {
-
             _userId = userId;
         }
 
@@ -27,18 +27,14 @@ namespace TaskManager.Services
                     UserId = _userId,
                     Title = model.Title,
                     Description = model.Description,
-
-
                 };
 
             using (var ctx = new ApplicationDbContext())
             {
-
                 ctx.Activities.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
-
 
         public IEnumerable<ActivityListItem> GetActivitiesByUser()
         {
@@ -54,15 +50,11 @@ namespace TaskManager.Services
                         {
                             Title = e.Title,
                             Description = e.Description,
-
                         }
                         );
                 return query.ToArray();
-
             }
-
         }
-
 
         public bool UpdateActivity(ActivityEdit model)
         {
@@ -77,12 +69,8 @@ namespace TaskManager.Services
                 entity.Description = model.Description;
 
                 return ctx.SaveChanges() == 1;
-
-
             }
-
         }
-
 
         public bool DeleteActivity(int activityId)
         {
@@ -98,40 +86,6 @@ namespace TaskManager.Services
                 return ctx.SaveChanges() == 1;
 
             }
-
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

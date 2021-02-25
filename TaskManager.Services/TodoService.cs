@@ -10,9 +10,11 @@ namespace TaskManager.Services
 {
     public class TodoService
     {
-        private readonly Guid _userId;
+        //private readonly Guid _userId;
+        private readonly string _userId;
 
-        public TodoService(Guid userId)
+      //  public TodoService(Guid userId)
+        public TodoService(string userId)
         {
             _userId = userId;
         }
