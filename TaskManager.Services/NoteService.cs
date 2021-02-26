@@ -11,9 +11,11 @@ namespace TaskManager.Services
     public class NoteService
     {
 
-        private readonly Guid _userId;
+       // private readonly Guid _userId;
+        private readonly string _userId;
 
-        public NoteService(Guid userId)
+      //  public NoteService(Guid userId)
+        public NoteService(string userId)
         {
             _userId = userId;
         }
@@ -27,7 +29,7 @@ namespace TaskManager.Services
                     Text = model.Text,
                     CreatedUtc = DateTimeOffset.Now,
                     ActivityId = model.ActivityId,
-                    CategoryId = model.CategoryId,
+                   // CategoryId = model.CategoryId,
                     TodoId = model.TodoId
                 };
             using (var ctx = new ApplicationDbContext())
@@ -75,25 +77,25 @@ namespace TaskManager.Services
             }
         }
 
-        public IEnumerable<NoteListItem> GetNotesByCategoryId(int id)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var query =
-                    ctx
-                    .Notes
-                    .Where(e => e.UserId == _userId && e.CategoryId == id)
-                    .Select(
-                        e =>
-                        new NoteListItem
-                        {
-                            NoteId = e.NoteId,
-                            Text = e.Text,
-                        }
-                        );
-                return query.ToArray();
-            }
-        }
+        //public IEnumerable<NoteListItem> GetNotesByCategoryId(int id)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var query =
+        //            ctx
+        //            .Notes
+        //           // .Where(e => e.UserId == _userId == id)
+        //            .Select(
+        //                e =>
+        //                new NoteListItem
+        //                {
+        //                    NoteId = e.NoteId,
+        //                    Text = e.Text,
+        //                }
+        //                );
+        //        return query.ToArray();
+        //    }
+        //}
 
         public bool UpdateNote(NoteEdit model)
         {
@@ -105,7 +107,7 @@ namespace TaskManager.Services
                     .Single(e => e.NoteId == model.NoteId && e.UserId == _userId);
                 entity.Text = model.Text;
                 entity.ActivityId = model.ActivityId;
-                entity.CategoryId = model.CategoryId;
+               // entity.CategoryId = model.CategoryId;
                 entity.TodoId = model.TodoId;
 
                 return ctx.SaveChanges() == 1;
