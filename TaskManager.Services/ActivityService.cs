@@ -11,10 +11,10 @@ namespace TaskManager.Services
 {
     public class ActivityService
     {
-       // private readonly Guid _userId;
-        private readonly int _userId;
-       // public ActivityService(Guid userId)
-        public ActivityService(int userId)
+        //// private readonly Guid _userId;
+        private readonly string _userId;
+        //// public ActivityService(Guid userId)
+        public ActivityService(string userId)
         {
             _userId = userId;
         }
@@ -22,9 +22,9 @@ namespace TaskManager.Services
         public bool CreateActivity(ActivityCreate model)
         {
             var entity =
-                new Activity()
+                new Activity
                 {
-                    UserId = _userId,
+                    ActivityId = model.ActivityId,
                     Title = model.Title,
                     Description = model.Description,
                 };
@@ -36,29 +36,62 @@ namespace TaskManager.Services
             }
         }
 
-        public IEnumerable<ActivityListItem> GetActivitiesByUser()
+        public IEnumerable<ActivityListItem> GetActivities()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
                     .Activities
-                    .Where(e => e.UserId == _userId)
-                    .Select(
-                        e =>
-                        new ActivityListItem
-                        {
-                            Title = e.Title,
-                            Description = e.Description,
-                        }
-                        );
-                return query.ToArray();
+                    .Select(c => new ActivityListItem
+                    {
+                        ActivityId = c.ActivityId,
+                        Title = c.Title,
+                        Description = c.Description
+                    }).ToList();
+                return query;
             }
         }
 
-        public bool UpdateActivity(ActivityEdit model)
+        public ActivityListItem GetActivityById(int Id)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Activities
+                    .Single(e => e.ActivityId == Id);
+
+                return new ActivityListItem
+                {
+                    Title = entity.Title,
+                    Description = entity.Description
+                };
+
+             }
+        }         //public IEnumerable<ActivityListItem> GetActivitiesByUser()
+                    //{
+                    //    using (var ctx = new ApplicationDbContext())
+                    //    {
+                    //        var query =
+                    //            ctx
+                    //            .Activities
+                    //            .Where(e => e.UserId == _userId)
+                    //            .Select(
+                    //                e =>
+                    //                new ActivityListItem
+                    //                {
+                    //                    Title = e.Title,
+                    //                    Description = e.Description,
+                    //                }
+                    //                );
+                    //        return query.ToArray();
+                
+           
+
+                public bool UpdateActivity(ActivityEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx

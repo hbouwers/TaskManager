@@ -12,18 +12,32 @@ namespace TaskManager.WebAPI.Controllers
 {
     public class ActivityController : ApiController
     {
+        //private readonly ActivityService _service = new ActivityService();
+
+        public IHttpActionResult Post(ActivityCreate activity)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            var service = CreateActivityServices();
+            if (!service.CreateActivity(activity))
+                return InternalServerError();
+            return Ok();
+        }
+
+
         private ActivityService CreateActivityServices()
         {
-          //  var userId = Guid.Parse(User.Identity.GetUserId());
-            var userId = int.Parse(User.Identity.GetUserId());
-            var activityService = new ActivityService(userId);
+            var userid =(User.Identity.GetUserId());
+            //var userid = int.parse(User.Identity.GetUserId());
+           
+            var activityService = new ActivityService(userid);
             return activityService;
         }
 
-        public  IHttpActionResult Get()
+        public IHttpActionResult Get(int id)
         {
             ActivityService activitySerivce = CreateActivityServices();
-            var activities = activitySerivce.GetActivitiesByUser();
+            var activities = activitySerivce.GetActivityById(id);
             return Ok(activities);
         }
 
