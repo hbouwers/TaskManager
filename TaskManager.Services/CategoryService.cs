@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskManager.Data;
+using TaskManager.Models;
 using TaskManager.Models.Category;
 
 namespace TaskManager.Services
@@ -43,20 +44,21 @@ namespace TaskManager.Services
             }
         }
 
-        public CategoryDetail GetCategoryById(int Id)
+        public CategoryListItem GetCategoryById(int Id)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var Category =
+                var entity =
                     ctx
                     .Categories
-                    .SingleOrDefault(c => c.CategoryId == Id);
+                    .Single(e => e.CategoryId == Id);
 
-                return new CategoryDetail
+                return new CategoryListItem
                 {
-                    CategoryId = Category.CategoryId,
-                    Title = Category.Title,
-                    Description = Category.Description
+                  //  CategoryId = entity.CategoryId,
+                    Title = entity.Title,
+                       Description = entity.Description
+                       // .Single(entity => new ActivityListItem)
                 };
             }
         }
