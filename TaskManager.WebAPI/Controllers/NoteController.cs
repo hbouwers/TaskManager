@@ -36,13 +36,13 @@ namespace TaskManager.WebAPI.Controllers
             var note = noteService.GetNoteById(id);
             return Ok(note);
         }
-        [Route("api/Note/GetByCategoryId/{id}")]
-        public IHttpActionResult GetByCategoryId(int id)
-        {
-            var noteService = CreateNoteService();
-            var notes = noteService.GetNotesByCategoryId(id);
-            return Ok(notes);
-        }
+        //[Route("api/Note/GetByCategoryId/{id}")]
+        //public IHttpActionResult GetByCategoryId(int id)
+        //{
+        //    var noteService = CreateNoteService();
+        //    var notes = noteService.GetNotesByCategoryId(id);
+        //    return Ok(notes);
+        //}
 
         public IHttpActionResult Put(NoteEdit note)
         {

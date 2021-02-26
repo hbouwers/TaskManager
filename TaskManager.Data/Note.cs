@@ -25,9 +25,9 @@ namespace TaskManager.Data
         public int TodoId { get; set; }
         public virtual Todo Todo { get; set; }
 
-        [ForeignKey(nameof(Category))]
-        public int CategoryId { get; set; }
-        public virtual Category Category { get; set; }
+        //[ForeignKey(nameof(Category))]
+        //public int? CategoryId { get; set; }
+        //public virtual Category Category { get; set; }
 
         [ForeignKey(nameof(User))]
         //changed from GUID to string bc type does not match

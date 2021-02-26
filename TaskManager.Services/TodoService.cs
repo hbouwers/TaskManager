@@ -27,7 +27,7 @@ namespace TaskManager.Services
                     DueDate = model.DueDate,
                     Complete = false,
                     UserId = _userId,
-                    ActivityId = model.ActivityId,
+                    //ActivityId = model.ActivityId,
                 };
 
             using (var ctx = new ApplicationDbContext())
