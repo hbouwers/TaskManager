@@ -95,6 +95,10 @@
     <Compile Include="Migrations\202102260134376_InitialMigration.designer.cs">
       <DependentUpon>202102260134376_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102260505504_ChangeUserIdFromIntToString.cs" />
+    <Compile Include="Migrations\202102260505504_ChangeUserIdFromIntToString.designer.cs">
+      <DependentUpon>202102260505504_ChangeUserIdFromIntToString.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Note.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -109,6 +113,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202102260134376_InitialMigration.resx">
       <DependentUpon>202102260134376_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102260505504_ChangeUserIdFromIntToString.resx">
+      <DependentUpon>202102260505504_ChangeUserIdFromIntToString.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
