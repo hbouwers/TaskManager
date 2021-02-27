@@ -7,13 +7,13 @@ namespace TaskManager.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class ChangeUserIdFromIntToString : IMigrationMetadata
+    public sealed partial class newdata3 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangeUserIdFromIntToString));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(newdata3));
         
         string IMigrationMetadata.Id
         {
-            get { return "202102260505504_ChangeUserIdFromIntToString"; }
+            get { return "202102270052210_newdata3"; }
         }
         
         string IMigrationMetadata.Source

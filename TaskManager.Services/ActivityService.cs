@@ -11,20 +11,20 @@ namespace TaskManager.Services
 {
     public class ActivityService
     {
-        //// private readonly Guid _userId;
-        private readonly string _userId;
-        //// public ActivityService(Guid userId)
-        public ActivityService(string userId)
-        {
-            _userId = userId;
-        }
+        // private readonly Guid _userId;
+        
+        //public ActivityService(Guid userId)
+        //{
+        //    _userId = userId;
+        //}
 
         public bool CreateActivity(ActivityCreate model)
         {
             var entity =
                 new Activity
                 {
-                    ActivityId = model.ActivityId,
+                    CategoryId = model.CategoryId,
+                    //ActivityId = model.ActivityId,
                     Title = model.Title,
                     Description = model.Description,
                 };
@@ -53,50 +53,50 @@ namespace TaskManager.Services
             }
         }
 
-        public ActivityListItem GetActivityById(int Id)
+        public ActivityDetail GetActivityById(int Id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                     .Activities
-                    .Single(e => e.ActivityId == Id);
+                    .SingleOrDefault(e => e.ActivityId == Id);
 
-                return new ActivityListItem
+                return new ActivityDetail
                 {
+                    ActivityId = entity.ActivityId,
                     Title = entity.Title,
                     Description = entity.Description
                 };
+            }
+        }
 
-             }
-        }         //public IEnumerable<ActivityListItem> GetActivitiesByUser()
-                    //{
-                    //    using (var ctx = new ApplicationDbContext())
-                    //    {
-                    //        var query =
-                    //            ctx
-                    //            .Activities
-                    //            .Where(e => e.UserId == _userId)
-                    //            .Select(
-                    //                e =>
-                    //                new ActivityListItem
-                    //                {
-                    //                    Title = e.Title,
-                    //                    Description = e.Description,
-                    //                }
-                    //                );
-                    //        return query.ToArray();
-                
-           
+        //public IEnumerable<ActivityListItem> GetActivitiesByUser()
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var query =
+        //            ctx
+        //            .Activities
+        //            .Where(e => e.UserId == _userId)
+        //            .Select(
+        //                e =>
+        //                new ActivityListItem
+        //                {
+        //                    Title = e.Title,
+        //                    Description = e.Description,
+        //                }
+        //                );
+        //        return query.ToArray();
 
-                public bool UpdateActivity(ActivityEdit model)
+        public bool UpdateActivity(ActivityEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                     .Activities
-                    .Single(e => e.ActivityId == model.ActivityId && e.UserId == _userId);
+                    .Single(e => e.ActivityId == model.ActivityId);
 
                 entity.Title = model.Title;
                 entity.Description = model.Description;
@@ -112,7 +112,7 @@ namespace TaskManager.Services
                 var entity =
                     ctx
                     .Activities
-                    .Single(e => e.ActivityId == activityId && e.UserId == _userId);
+                    .Single(e => e.ActivityId == activityId);
 
                 ctx.Activities.Remove(entity);
 

@@ -11,13 +11,20 @@ namespace TaskManager.Services
 {
     public class CategoryService
     {
+        private readonly Guid _userId;
+
+        public CategoryService(Guid userId)
+        {
+            _userId = userId;
+        }
         public bool CreateCategory(CategoryCreate category)
         {
-            var Entity = new Category
+            var Entity = new Category()
             {
+                UserId = _userId,
                 CategoryId = category.CategoryId,
                 Title = category.Title,
-                Description= category.Description
+                Description = category.Description
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -34,6 +41,7 @@ namespace TaskManager.Services
                 var query =
                     ctx
                     .Categories
+                    .Where(e => e.UserId == _userId)
                     .Select(c => new CategoryListItem
                     {
                         CategoryId = c.CategoryId,
@@ -44,21 +52,23 @@ namespace TaskManager.Services
             }
         }
 
-        public CategoryListItem GetCategoryById(int Id)
+        public CategoryDetail GetCategoryById(int Id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                     .Categories
-                    .Single(e => e.CategoryId == Id);
+                    .Single(e => e.CategoryId == Id && e.UserId == _userId);
 
-                return new CategoryListItem
+                return new CategoryDetail
                 {
-                  //  CategoryId = entity.CategoryId,
+                    //CategoryId = entity.CategoryId,
                     Title = entity.Title,
-                       Description = entity.Description
-                       // .Single(entity => new ActivityListItem)
+                    Description = entity.Description,
+                    //ActivityId = entity.ActivityId,
+                    //Activity = new ActivityListItem() { ActivityId = entity.Activity.ActivityId}
+                    //    //.Single(entity => new ActivityListItem)
                 };
             }
         }
@@ -70,7 +80,7 @@ namespace TaskManager.Services
                 var Category =
                     ctx
                     .Categories
-                    .SingleOrDefault(c => c.CategoryId == categoryEdit.CategoryId);
+                    .SingleOrDefault(c => c.CategoryId == categoryEdit.CategoryId && c.UserId == _userId);
 
                 Category.Title = categoryEdit.Title;
                 Category.Description = categoryEdit.Description;
@@ -86,7 +96,7 @@ namespace TaskManager.Services
                 var Category =
                    ctx
                    .Categories
-                   .SingleOrDefault(c => c.CategoryId == Id);
+                   .Single(c => c.CategoryId == Id && c.UserId == _userId);
 
                 ctx.Categories.Remove(Category);
 
