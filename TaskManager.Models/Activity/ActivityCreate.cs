@@ -9,7 +9,7 @@ namespace TaskManager.Models.Activity
 {
     public class ActivityCreate
     {
-        public int ActivityId { get; set; }
+        public int CategoryId { get; set; }
 
         //[Required]
        // [MinLength(2, ErrorMessage = "Please enter at least 2 characters.")]

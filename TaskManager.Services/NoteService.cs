@@ -11,11 +11,11 @@ namespace TaskManager.Services
     public class NoteService
     {
 
-       // private readonly Guid _userId;
-        private readonly string _userId;
+        private readonly Guid _userId;
+        //private readonly string _userId;
 
       //  public NoteService(Guid userId)
-        public NoteService(string userId)
+        public NoteService(Guid userId)
         {
             _userId = userId;
         }
@@ -25,12 +25,11 @@ namespace TaskManager.Services
             var entity =
                 new Note()
                 {
-                    UserId = _userId,
+                   // UserId = _userId,
+                    NoteId = model.ActivityId,
                     Text = model.Text,
                     CreatedUtc = DateTimeOffset.Now,
-                    ActivityId = model.ActivityId,
-                   // CategoryId = model.CategoryId,
-                    TodoId = model.TodoId
+                    //TodoId = model.TodoId
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -46,7 +45,7 @@ namespace TaskManager.Services
                 var query =
                     ctx
                     .Notes
-                    .Where(e => e.UserId == _userId)
+                   // .Where(e => e.UserId == _userId)
                     .Select(
                         e =>
                         new NoteListItem
@@ -66,7 +65,7 @@ namespace TaskManager.Services
                 var entity =
                     ctx
                     .Notes
-                    .Single(e => e.NoteId == id && e.UserId == _userId);
+                    .Single(e => e.NoteId == id);
                 return
                     new NoteDetail
                     {
@@ -104,11 +103,11 @@ namespace TaskManager.Services
                 var entity =
                     ctx
                     .Notes
-                    .Single(e => e.NoteId == model.NoteId && e.UserId == _userId);
+                    .Single(e => e.NoteId == model.NoteId);
                 entity.Text = model.Text;
-                entity.ActivityId = model.ActivityId;
+               // entity.ActivityId = model.ActivityId;
                // entity.CategoryId = model.CategoryId;
-                entity.TodoId = model.TodoId;
+               // entity.TodoId = model.TodoId;
 
                 return ctx.SaveChanges() == 1;
             }
@@ -121,7 +120,7 @@ namespace TaskManager.Services
                 var entity =
                     ctx
                     .Notes
-                    .Single(e => e.NoteId == noteId && e.UserId == _userId);
+                    .Single(e => e.NoteId == noteId);
                 ctx.Notes.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }
