@@ -18,13 +18,5 @@ namespace TaskManager.Data
 
         [Required]
         public string Description { get; set; }
-
-        [Required]
-         public Guid UserId { get; set; }
-
-
-        //[ForeignKey(nameof(Activity))]
-        //public int ActivityId { get; set; }
-        //public virtual Activity Activity { get; set; }
     }
 }

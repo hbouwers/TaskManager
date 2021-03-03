@@ -10,11 +10,9 @@ namespace TaskManager.Models.Todo
     public class TodoDetail
     {
         public int TodoId { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
         public DateTime DueDate { get; set; }
         public bool Complete { get; set; }
-
-       // [ForeignKey(nameof(Activity))]
-       // public int ActivityId { get; set; }
-       // public virtual Data.Activity Activity { get; set; }
     }
 }

@@ -12,8 +12,6 @@ namespace TaskManager.WebAPI.Controllers
 {
     public class CategoryController : ApiController
     {
-        // private readonly CategoryService _service = new CategoryService();
-
         public IHttpActionResult Post(CategoryCreate category)
         {
             if (!ModelState.IsValid)
@@ -26,12 +24,14 @@ namespace TaskManager.WebAPI.Controllers
 
             return Ok();
         }
+
         public IHttpActionResult Get()
         {
             CategoryService CategoryService = CreateCategoryService();
             var category = CategoryService.GetCategories();
             return Ok(category);
         }
+
         public IHttpActionResult Get(int id)
         {
             var categoryService = CreateCategoryService();

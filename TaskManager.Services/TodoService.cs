@@ -10,11 +10,9 @@ namespace TaskManager.Services
 {
     public class TodoService
     {
-        //private readonly Guid _userId;
-        private readonly string _userId;
+        private readonly Guid _userId;
 
-      //  public TodoService(Guid userId)
-        public TodoService(string userId)
+        public TodoService(Guid userId)
         {
             _userId = userId;
         }
@@ -27,7 +25,7 @@ namespace TaskManager.Services
                     DueDate = model.DueDate,
                     Complete = false,
                     UserId = _userId,
-                    //ActivityId = model.ActivityId,
+                    ActivityId = model.ActivityId,
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -50,6 +48,7 @@ namespace TaskManager.Services
                         new TodoListItem
                         {
                             TodoId = e.TodoId,
+                            Title = e.Activity.Title,
                             DueDate = e.DueDate,
                             Complete = e.Complete,
                         }
@@ -70,6 +69,8 @@ namespace TaskManager.Services
                     new TodoDetail
                     {
                         TodoId = entity.TodoId,
+                        Title = entity.Activity.Title,
+                        Description = entity.Activity.Description,
                         DueDate = entity.DueDate,
                         Complete = entity.Complete
                     };

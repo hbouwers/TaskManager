@@ -68,8 +68,7 @@ namespace TaskManager.WebAPI.Controllers
 
         private TodoService CreateTodoService()
         {
-            //var userId = Guid.Parse(User.Identity.GetUserId());
-            var userId = (User.Identity.GetUserId());
+            var userId = Guid.Parse(User.Identity.GetUserId());
             var todoService = new TodoService(userId);
             return todoService;
         }

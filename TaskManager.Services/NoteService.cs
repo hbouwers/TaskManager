@@ -10,11 +10,8 @@ namespace TaskManager.Services
 {
     public class NoteService
     {
-
         private readonly Guid _userId;
-        //private readonly string _userId;
 
-      //  public NoteService(Guid userId)
         public NoteService(Guid userId)
         {
             _userId = userId;
@@ -25,11 +22,11 @@ namespace TaskManager.Services
             var entity =
                 new Note()
                 {
-                   // UserId = _userId,
+                    UserId = _userId,
                     NoteId = model.ActivityId,
                     Text = model.Text,
                     CreatedUtc = DateTimeOffset.Now,
-                    //TodoId = model.TodoId
+                    TodoId = model.TodoId
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -45,7 +42,7 @@ namespace TaskManager.Services
                 var query =
                     ctx
                     .Notes
-                   // .Where(e => e.UserId == _userId)
+                    .Where(e => e.UserId == _userId)
                     .Select(
                         e =>
                         new NoteListItem
@@ -65,6 +62,7 @@ namespace TaskManager.Services
                 var entity =
                     ctx
                     .Notes
+                    .Where(e => e.UserId == _userId)
                     .Single(e => e.NoteId == id);
                 return
                     new NoteDetail
@@ -76,26 +74,6 @@ namespace TaskManager.Services
             }
         }
 
-        //public IEnumerable<NoteListItem> GetNotesByCategoryId(int id)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var query =
-        //            ctx
-        //            .Notes
-        //           // .Where(e => e.UserId == _userId == id)
-        //            .Select(
-        //                e =>
-        //                new NoteListItem
-        //                {
-        //                    NoteId = e.NoteId,
-        //                    Text = e.Text,
-        //                }
-        //                );
-        //        return query.ToArray();
-        //    }
-        //}
-
         public bool UpdateNote(NoteEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -104,10 +82,10 @@ namespace TaskManager.Services
                     ctx
                     .Notes
                     .Single(e => e.NoteId == model.NoteId);
+
                 entity.Text = model.Text;
-               // entity.ActivityId = model.ActivityId;
-               // entity.CategoryId = model.CategoryId;
-               // entity.TodoId = model.TodoId;
+                //entity.ActivityId = model.ActivityId;
+                entity.TodoId = model.TodoId;
 
                 return ctx.SaveChanges() == 1;
             }
