@@ -17,24 +17,10 @@ namespace TaskManager.Models.Note
         [Required]
         public string Text { get; set; }
 
-       // [ForeignKey(nameof(Category))]
-       // public int CategoryId { get; set; }
-
-        //public virtual Category Category { get; set; }
-
-       // [ForeignKey(nameof(ApplicationUser))]
-        //public string UserId { get; set; }
-        //public virtual ApplicationUser User { get; set; }
-
-        [Display(Name = "Created")]
-        public DateTimeOffset CreatedUtc { get; set; }
-
-       // [ForeignKey(nameof(Activity))]
+       
         public int ActivityId { get; set; }
-        //public virtual Activity Activity { get; set; }
 
-       // [ForeignKey(nameof(Todo))]
-        //public int TodoId { get; set; }
-        // public virtual Todo Todo { get; set; }
+
+        public int TodoId { get; set; }
     }
 }

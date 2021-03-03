@@ -10,7 +10,6 @@ namespace TaskManager.Data
 {
     public class Activity
     {
-
         [Key]
         public int ActivityId { get; set; }
 
@@ -24,6 +23,6 @@ namespace TaskManager.Data
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
 
-        public virtual Note Note { get; set; }
+        public Guid UserId { get; set; }
     }
 }

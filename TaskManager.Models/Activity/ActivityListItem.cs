@@ -9,7 +9,6 @@ namespace TaskManager.Models
 {
     public class ActivityListItem
     {
-       // public Guid ActivityId { get; set; }
         public int ActivityId { get; set; }
 
         [Required]

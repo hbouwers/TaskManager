@@ -21,8 +21,6 @@ namespace TaskManager.Services
         {
             var Entity = new Category()
             {
-                UserId = _userId,
-                CategoryId = category.CategoryId,
                 Title = category.Title,
                 Description = category.Description
             };
@@ -41,7 +39,6 @@ namespace TaskManager.Services
                 var query =
                     ctx
                     .Categories
-                    .Where(e => e.UserId == _userId)
                     .Select(c => new CategoryListItem
                     {
                         CategoryId = c.CategoryId,
@@ -59,16 +56,12 @@ namespace TaskManager.Services
                 var entity =
                     ctx
                     .Categories
-                    .Single(e => e.CategoryId == Id && e.UserId == _userId);
+                    .Single(e => e.CategoryId == Id);
 
                 return new CategoryDetail
                 {
-                    //CategoryId = entity.CategoryId,
                     Title = entity.Title,
-                    Description = entity.Description,
-                    //ActivityId = entity.ActivityId,
-                    //Activity = new ActivityListItem() { ActivityId = entity.Activity.ActivityId}
-                    //    //.Single(entity => new ActivityListItem)
+                    Description = entity.Description
                 };
             }
         }
@@ -80,7 +73,7 @@ namespace TaskManager.Services
                 var Category =
                     ctx
                     .Categories
-                    .SingleOrDefault(c => c.CategoryId == categoryEdit.CategoryId && c.UserId == _userId);
+                    .SingleOrDefault(c => c.CategoryId == categoryEdit.CategoryId);
 
                 Category.Title = categoryEdit.Title;
                 Category.Description = categoryEdit.Description;
@@ -96,7 +89,7 @@ namespace TaskManager.Services
                 var Category =
                    ctx
                    .Categories
-                   .Single(c => c.CategoryId == Id && c.UserId == _userId);
+                   .Single(c => c.CategoryId == Id);
 
                 ctx.Categories.Remove(Category);
 

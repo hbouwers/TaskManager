@@ -11,17 +11,15 @@ using TaskManager.Services;
 
 namespace TaskManager.WebAPI.Controllers
 {
+    [Authorize]
     public class ActivityController : ApiController
-    {
-        // private readonly ActivityService _service = new ActivityService();
-
-       
+    {       
         public IHttpActionResult Post(ActivityCreate activity)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = new ActivityService();
+            var service = CreateActivityService();
 
             if (!service.CreateActivity(activity))
                 return InternalServerError();
@@ -31,13 +29,14 @@ namespace TaskManager.WebAPI.Controllers
        
         public IHttpActionResult Get()
             {
-                var activityService = new ActivityService();
+                ActivityService activityService = CreateActivityService();
                 var activity = activityService.GetActivities();
                 return Ok(activity);
             }
+
         public IHttpActionResult Get(int id)
         {
-            var activityService = new ActivityService();
+            ActivityService activityService = CreateActivityService();
             var activity = activityService.GetActivityById(id);
             return Ok(activity);
         }
@@ -47,7 +46,7 @@ namespace TaskManager.WebAPI.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = new ActivityService();
+            var service = CreateActivityService();
 
             if (!service.UpdateActivity(activity))
                 return InternalServerError();
@@ -57,12 +56,19 @@ namespace TaskManager.WebAPI.Controllers
 
         public IHttpActionResult Delete(int id)
         {
-            var service = new ActivityService();
+            var service = CreateActivityService();
 
             if (!service.DeleteActivity(id))
                 return InternalServerError();
 
             return Ok();
+        }
+
+        private ActivityService CreateActivityService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var activityService = new ActivityService(userId);
+            return activityService;
         }
     }
 }
