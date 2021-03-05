@@ -20,6 +20,8 @@ namespace TaskManager.Models.Activity
         [MinLength(2, ErrorMessage = "Please enter at least 2 characters.")]
         [MaxLength(100, ErrorMessage = "There are too many characters in this field.")]
         public string Description { get; set; }
+
+        public Guid UserId { get; set; }
     }
 }
 

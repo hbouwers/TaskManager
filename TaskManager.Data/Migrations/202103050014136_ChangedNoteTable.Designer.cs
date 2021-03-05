@@ -7,13 +7,13 @@ namespace TaskManager.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class newdata3 : IMigrationMetadata
+    public sealed partial class ChangedNoteTable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(newdata3));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangedNoteTable));
         
         string IMigrationMetadata.Id
         {
-            get { return "202102270052210_newdata3"; }
+            get { return "202103050014136_ChangedNoteTable"; }
         }
         
         string IMigrationMetadata.Source

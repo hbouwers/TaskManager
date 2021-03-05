@@ -23,6 +23,7 @@ namespace TaskManager.Services
             var entity =
                 new Activity
                 {
+                    UserId = _userId,
                     CategoryId = model.CategoryId,
                     Title = model.Title,
                     Description = model.Description,
@@ -66,6 +67,7 @@ namespace TaskManager.Services
                 return new ActivityDetail
                 {
                     ActivityId = entity.ActivityId,
+                    CategoryId = entity.CategoryId,
                     Title = entity.Title,
                     Description = entity.Description
                 };

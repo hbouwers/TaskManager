@@ -15,6 +15,7 @@
                         Title = c.String(nullable: false),
                         Description = c.String(nullable: false),
                         CategoryId = c.Int(nullable: false),
+                        UserId = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => t.ActivityId)
                 .ForeignKey("dbo.Category", t => t.CategoryId, cascadeDelete: true)
@@ -27,7 +28,6 @@
                         CategoryId = c.Int(nullable: false, identity: true),
                         Title = c.String(nullable: false),
                         Description = c.String(nullable: false),
-                        UserId = c.Guid(nullable: false),
                     })
                 .PrimaryKey(t => t.CategoryId);
             
@@ -35,15 +35,14 @@
                 "dbo.Note",
                 c => new
                     {
-                        NoteId = c.Int(nullable: false),
+                        NoteId = c.Int(nullable: false, identity: true),
+                        UserId = c.Guid(nullable: false),
                         Text = c.String(nullable: false),
                         CreatedUtc = c.DateTimeOffset(nullable: false, precision: 7),
                         TodoId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.NoteId)
-                .ForeignKey("dbo.Activity", t => t.NoteId)
                 .ForeignKey("dbo.Todo", t => t.TodoId, cascadeDelete: true)
-                .Index(t => t.NoteId)
                 .Index(t => t.TodoId);
             
             CreateTable(
@@ -51,11 +50,14 @@
                 c => new
                     {
                         TodoId = c.Int(nullable: false, identity: true),
-                        UserId = c.String(nullable: false),
+                        ActivityId = c.Int(nullable: false),
+                        UserId = c.Guid(nullable: false),
                         DueDate = c.DateTime(nullable: false),
                         Complete = c.Boolean(nullable: false),
                     })
-                .PrimaryKey(t => t.TodoId);
+                .PrimaryKey(t => t.TodoId)
+                .ForeignKey("dbo.Activity", t => t.ActivityId, cascadeDelete: true)
+                .Index(t => t.ActivityId);
             
             CreateTable(
                 "dbo.IdentityRole",
@@ -136,14 +138,14 @@
             DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
             DropForeignKey("dbo.Note", "TodoId", "dbo.Todo");
-            DropForeignKey("dbo.Note", "NoteId", "dbo.Activity");
+            DropForeignKey("dbo.Todo", "ActivityId", "dbo.Activity");
             DropForeignKey("dbo.Activity", "CategoryId", "dbo.Category");
             DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
+            DropIndex("dbo.Todo", new[] { "ActivityId" });
             DropIndex("dbo.Note", new[] { "TodoId" });
-            DropIndex("dbo.Note", new[] { "NoteId" });
             DropIndex("dbo.Activity", new[] { "CategoryId" });
             DropTable("dbo.IdentityUserLogin");
             DropTable("dbo.IdentityUserClaim");

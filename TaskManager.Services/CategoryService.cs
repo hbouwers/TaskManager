@@ -60,6 +60,7 @@ namespace TaskManager.Services
 
                 return new CategoryDetail
                 {
+                    CategoryId = entity.CategoryId,
                     Title = entity.Title,
                     Description = entity.Description
                 };

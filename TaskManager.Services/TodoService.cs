@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskManager.Models.Todo;
 using TaskManager.Data;
+using System.Web.Http;
 
 namespace TaskManager.Services
 {
@@ -77,7 +78,7 @@ namespace TaskManager.Services
             }
         }
 
-        // add activity
+        [Route("api/Todo/UpdateTodoId/{id}")]
         public bool UpdateTodo(TodoEdit model)
         {
             using (var ctx = new ApplicationDbContext())
