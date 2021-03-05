@@ -13,9 +13,9 @@ namespace TaskManager.Data
         [Key]
         public int NoteId { get; set; }
 
-        //[ForeignKey(nameof(Activity))]
-        //public int ActivityId { get; set; }
-        //public virtual Activity Activity { get; set; }
+        [ForeignKey(nameof(Activity))]
+        public int ActivityId { get; set; }
+        public virtual Activity Activity { get; set; }
 
         public Guid UserId { get; set; }
 
@@ -23,9 +23,5 @@ namespace TaskManager.Data
         public string Text { get; set; }
 
         public DateTimeOffset CreatedUtc { get; set; }
-
-        [ForeignKey(nameof(Todo))]
-        public int TodoId { get; set; }
-        public virtual Todo Todo { get; set; }
     }
 }

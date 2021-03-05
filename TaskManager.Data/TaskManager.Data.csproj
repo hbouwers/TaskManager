@@ -91,25 +91,13 @@
     <Compile Include="Activity.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202102270022555_InitialCreate.cs" />
-    <Compile Include="Migrations\202102270022555_InitialCreate.designer.cs">
-      <DependentUpon>202102270022555_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202103040435522_InitialCreate.cs" />
+    <Compile Include="Migrations\202103040435522_InitialCreate.designer.cs">
+      <DependentUpon>202103040435522_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202102270045283_newdata.cs" />
-    <Compile Include="Migrations\202102270045283_newdata.designer.cs">
-      <DependentUpon>202102270045283_newdata.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102270049591_newdata2.cs" />
-    <Compile Include="Migrations\202102270049591_newdata2.designer.cs">
-      <DependentUpon>202102270049591_newdata2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102270052210_newdata3.cs" />
-    <Compile Include="Migrations\202102270052210_newdata3.designer.cs">
-      <DependentUpon>202102270052210_newdata3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202103030256561_AddTodo.cs" />
-    <Compile Include="Migrations\202103030256561_AddTodo.designer.cs">
-      <DependentUpon>202103030256561_AddTodo.cs</DependentUpon>
+    <Compile Include="Migrations\202103050014136_ChangedNoteTable.cs" />
+    <Compile Include="Migrations\202103050014136_ChangedNoteTable.designer.cs">
+      <DependentUpon>202103050014136_ChangedNoteTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Note.cs" />
@@ -123,20 +111,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202102270022555_InitialCreate.resx">
-      <DependentUpon>202102270022555_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202103040435522_InitialCreate.resx">
+      <DependentUpon>202103040435522_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102270045283_newdata.resx">
-      <DependentUpon>202102270045283_newdata.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102270049591_newdata2.resx">
-      <DependentUpon>202102270049591_newdata2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102270052210_newdata3.resx">
-      <DependentUpon>202102270052210_newdata3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103030256561_AddTodo.resx">
-      <DependentUpon>202103030256561_AddTodo.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202103050014136_ChangedNoteTable.resx">
+      <DependentUpon>202103050014136_ChangedNoteTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

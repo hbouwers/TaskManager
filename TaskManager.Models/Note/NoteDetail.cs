@@ -19,7 +19,5 @@ namespace TaskManager.Models.Note
         public DateTimeOffset CreatedUtc { get; set; }
 
         public int? ActivityId { get; set; }
-
-        public int TodoId { get; set; }
     }
 }

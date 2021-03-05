@@ -23,10 +23,9 @@ namespace TaskManager.Services
                 new Note()
                 {
                     UserId = _userId,
-                    NoteId = model.ActivityId,
+                    ActivityId = model.ActivityId,
                     Text = model.Text,
                     CreatedUtc = DateTimeOffset.Now,
-                    TodoId = model.TodoId
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -73,7 +72,6 @@ namespace TaskManager.Services
                     };
             }
         }
-
         public bool UpdateNote(NoteEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -84,9 +82,6 @@ namespace TaskManager.Services
                     .Single(e => e.NoteId == model.NoteId);
 
                 entity.Text = model.Text;
-                //entity.ActivityId = model.ActivityId;
-                entity.TodoId = model.TodoId;
-
                 return ctx.SaveChanges() == 1;
             }
         }
