@@ -55,3 +55,4 @@ You can rename the current file by clicking the file name in the navigation bar 
  - https://www.entityframeworktutorial.net/code-first/configure-one-to-one-relationship-in-code-first.aspx
  - https://stackoverflow.com/questions/4865873/the-alter-table-statement-conflicted-with-the-foreign-key-constrain
  - https://coderwall.com/p/sqmrog/3-easy-steps-to-create-webapi-documentations
+ - https://docs.microsoft.com/en-us/aspnet/web-api/overview/getting-started-with-aspnet-web-api/creating-api-help-pages
