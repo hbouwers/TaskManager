@@ -649,5 +649,16 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="T:ElevenNote.WebAPI.AddAuthorizationHeaderParameterOperationFilter">
+            <summary>
+            Document filter for adding Authorization header in Swashbuckle / Swagger.
+            </summary>
+        </member>
+        <member name="T:ElevenNote.WebAPI.AuthTokenEndpointOperation">
+            <summary>
+            Document filter for adding OAuth Token endpoint documentation in Swashbuckle / Swagger.
+            Swagger normally won't find it - the /token endpoint - due to it being programmatically generated.
+            </summary>
+        </member>
     </members>
 </doc>

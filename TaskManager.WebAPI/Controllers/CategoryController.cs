@@ -90,8 +90,8 @@ namespace TaskManager.WebAPI.Controllers
         }
         private CategoryService CreateCategoryService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var CategoryService = new CategoryService(userId);
+           // var userId = Guid.Parse(User.Identity.GetUserId());
+            var CategoryService = new CategoryService();
             return CategoryService;
         }
     }

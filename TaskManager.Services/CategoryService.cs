@@ -11,12 +11,12 @@ namespace TaskManager.Services
 {
     public class CategoryService
     {
-        private readonly Guid _userId;
+        //private readonly Guid _userId;
 
-        public CategoryService(Guid userId)
-        {
-            _userId = userId;
-        }
+        //public CategoryService(Guid userId)
+        //{
+        //    _userId = userId;
+        //}
         public bool CreateCategory(CategoryCreate category)
         {
             var Entity = new Category()

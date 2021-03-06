@@ -79,27 +79,27 @@ namespace TaskManager.Services
                 return query.ToArray();
             }
         }
-        public IEnumerable<TodoListItem> GetTodaysTodos()
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var query =
-                    ctx
-                    .Todos
-                    .Where(e => e.UserId == _userId && e.DueDate == DateTime.Today)
-                    .Select(
-                        e =>
-                        new TodoListItem
-                        {
-                            TodoId = e.TodoId,
-                            Title = e.Activity.Title,
-                            DueDate = e.DueDate,
-                            Complete = e.Complete,
-                        }
-                        );
-                return query.ToArray();
-            }
-        }
+        //public IEnumerable<TodoListItem> GetTodaysTodos()
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var query =
+        //            ctx
+        //            .Todos
+        //            .Where(e => e.UserId == _userId && e.DueDate.CompareTo(DateTime.Now, ) >1)
+        //            .Select(
+        //                e =>
+        //                new TodoListItem
+        //                {
+        //                    TodoId = e.TodoId,
+        //                    Title = e.Activity.Title,
+        //                    DueDate = e.DueDate,
+        //                    Complete = e.Complete,
+        //                }
+        //                );
+        //        return query.ToArray();
+        //    }
+        //}
 
         public TodoDetail GetTodoById(int id)
         {
