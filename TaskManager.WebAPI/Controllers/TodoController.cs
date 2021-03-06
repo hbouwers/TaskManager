@@ -27,7 +27,7 @@ namespace TaskManager.WebAPI.Controllers
         /// </summary>
         /// <returns></returns>
         /// 
-        [HttpGet]
+        [Route("api/Todo/GetIncompleteTodos")]
         public IHttpActionResult GetIncompleteTodos()
         {
             TodoService todoService = CreateTodoService();
@@ -39,7 +39,7 @@ namespace TaskManager.WebAPI.Controllers
         /// </summary>
         /// <returns></returns>
         /// 
-        [HttpGet]
+        [Route("api/Todo/GetTodaysTodos")]
         public IHttpActionResult GetTodaysTodos()
         {
             TodoService todoService = CreateTodoService();
