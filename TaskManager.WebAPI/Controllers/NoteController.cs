@@ -13,13 +13,21 @@ namespace TaskManager.WebAPI.Controllers
     [Authorize]
     public class NoteController : ApiController
     {
+    /// <summary>
+    /// Get All Notes
+    /// </summary>
+    /// <returns></returns>
         public IHttpActionResult Get()
         {
             NoteService noteService = CreateNoteService();
             var notes = noteService.GetNotes();
             return Ok(notes);
         }
-
+        /// <summary>
+        /// Create a Note
+        /// </summary>
+        /// <param name="note"></param>
+        /// <returns></returns>
         public IHttpActionResult Post(NoteCreate note)
         {
             if (!ModelState.IsValid)
@@ -29,14 +37,22 @@ namespace TaskManager.WebAPI.Controllers
                 return InternalServerError();
             return Ok();
         }
-
+        /// <summary>
+        /// Get Note by NoteId
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult Get(int id)
         {
             NoteService noteService = CreateNoteService();
             var note = noteService.GetNoteById(id);
             return Ok(note);
         }
-
+        /// <summary>
+        /// Update a Note
+        /// </summary>
+        /// <param name="note"></param>
+        /// <returns></returns>
         public IHttpActionResult Put(NoteEdit note)
         {
             if (!ModelState.IsValid)
@@ -49,7 +65,11 @@ namespace TaskManager.WebAPI.Controllers
 
             return Ok();
         }
-
+        /// <summary>
+        /// Delete a Note by NoteId
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult Delete(int id)
         {
             var service = CreateNoteService();
