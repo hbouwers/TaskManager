@@ -24,6 +24,19 @@ namespace TaskManager.WebAPI.Controllers
             return Ok(notes);
         }
         /// <summary>
+        /// Get Notes By ActivityId
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// 
+        [Route("api/Note/GetByActivity/{id}")]
+        public IHttpActionResult GetByActivity(int id)
+        {
+            NoteService noteService = CreateNoteService();
+            var notes = noteService.GetNotesByActivity(id);
+            return Ok(notes);
+        }
+        /// <summary>
         /// Create a Note
         /// </summary>
         /// <param name="note"></param>

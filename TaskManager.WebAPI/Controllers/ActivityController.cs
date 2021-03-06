@@ -43,10 +43,25 @@ namespace TaskManager.WebAPI.Controllers
                 return Ok(activity);
             }
         /// <summary>
+        /// Get Activities by CategoryId
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// 
+        [Route("api/Activity/GetByCategory/{id}")]
+        public IHttpActionResult GetByCategory(int id)
+        {
+            ActivityService activityService = CreateActivityService();
+            var activity = activityService.GetActivitiesByCategory(id);
+            return Ok(activity);
+        }
+
+        /// <summary>
         /// Get Activity by ActivityId
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        /// 
         public IHttpActionResult Get(int id)
         {
             ActivityService activityService = CreateActivityService();

@@ -23,6 +23,30 @@ namespace TaskManager.WebAPI.Controllers
             return Ok(todos);
         }
         /// <summary>
+        /// Get All Incomplete Todos
+        /// </summary>
+        /// <returns></returns>
+        /// 
+        [Route("api/Todo/GetIncompleteTodos")]
+        public IHttpActionResult GetIncompleteTodos()
+        {
+            TodoService todoService = CreateTodoService();
+            var todos = todoService.GetIncompleteTodos();
+            return Ok(todos);
+        }
+        /// <summary>
+        /// Get Today's Todos
+        /// </summary>
+        /// <returns></returns>
+        /// 
+        [Route("api/Todo/GetTodaysTodos")]
+        public IHttpActionResult GetTodaysTodos()
+        {
+            TodoService todoService = CreateTodoService();
+            var todos = todoService.GetTodaysTodos();
+            return Ok(todos);
+        }
+        /// <summary>
         /// Create a Todo
         /// </summary>
         /// <param name="todo"></param>
@@ -55,6 +79,8 @@ namespace TaskManager.WebAPI.Controllers
         /// </summary>
         /// <param name="todo"></param>
         /// <returns></returns>
+        /// 
+        [Route("api/Todo/UpdateTodoId/{id}")]
         public IHttpActionResult Put(TodoEdit todo)
         {
             if (!ModelState.IsValid)

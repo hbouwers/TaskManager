@@ -53,7 +53,25 @@ namespace TaskManager.Services
                 return query.ToArray();
             }
         }
-
+        public IEnumerable<NoteListItem> GetNotesByActivity(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Notes
+                    .Where(e => e.UserId == _userId && e.ActivityId == id)
+                    .Select(
+                        e =>
+                        new NoteListItem
+                        {
+                            NoteId = e.NoteId,
+                            Text = e.Text,
+                        }
+                        );
+                return query.ToArray();
+            }
+        }
         public NoteDetail GetNoteById(int id)
         {
             using (var ctx = new ApplicationDbContext())

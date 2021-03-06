@@ -494,12 +494,21 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:TaskManager.WebAPI.Controllers.ActivityController.GetByCategory(System.Int32)">
+            <summary>
+            Get Activities by CategoryId
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            
+        </member>
         <member name="M:TaskManager.WebAPI.Controllers.ActivityController.Get(System.Int32)">
             <summary>
             Get Activity by ActivityId
             </summary>
             <param name="id"></param>
             <returns></returns>
+            
         </member>
         <member name="M:TaskManager.WebAPI.Controllers.ActivityController.Put(TaskManager.Models.Activity.ActivityEdit)">
             <summary>
@@ -555,6 +564,14 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:TaskManager.WebAPI.Controllers.NoteController.GetByActivity(System.Int32)">
+            <summary>
+            Get Notes By ActivityId
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            
+        </member>
         <member name="M:TaskManager.WebAPI.Controllers.NoteController.Post(TaskManager.Models.Note.NoteCreate)">
             <summary>
             Create a Note
@@ -589,6 +606,20 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:TaskManager.WebAPI.Controllers.TodoController.GetIncompleteTodos">
+            <summary>
+            Get All Incomplete Todos
+            </summary>
+            <returns></returns>
+            
+        </member>
+        <member name="M:TaskManager.WebAPI.Controllers.TodoController.GetTodaysTodos">
+            <summary>
+            Get Today's Todos
+            </summary>
+            <returns></returns>
+            
+        </member>
         <member name="M:TaskManager.WebAPI.Controllers.TodoController.Post(TaskManager.Models.Todo.TodoCreate)">
             <summary>
             Create a Todo
@@ -609,6 +640,7 @@
             </summary>
             <param name="todo"></param>
             <returns></returns>
+            
         </member>
         <member name="M:TaskManager.WebAPI.Controllers.TodoController.Delete(System.Int32)">
             <summary>

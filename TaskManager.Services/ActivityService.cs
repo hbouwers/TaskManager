@@ -72,6 +72,23 @@ namespace TaskManager.Services
                 };
             }
         }
+        public IEnumerable<ActivityListItem> GetActivitiesByCategory(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Activities
+                    .Where(e => e.UserId == _userId && e.CategoryId == id)
+                    .Select(c => new ActivityListItem
+                    {
+                        ActivityId = c.ActivityId,
+                        Title = c.Title,
+                        Description = c.Description
+                    }).ToList();
+                return query;
+            }
+        }
 
         public bool UpdateActivity(ActivityEdit model)
         {
