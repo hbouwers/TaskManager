@@ -24,7 +24,6 @@ namespace TaskManager.Services
                 new Activity
                 {
                     UserId = _userId,
-                    CategoryId = model.CategoryId,
                     Title = model.Title,
                     Description = model.Description,
                 };

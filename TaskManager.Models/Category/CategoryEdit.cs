@@ -9,6 +9,7 @@ namespace TaskManager.Models.Category
 {
    public class CategoryEdit
     {
+        [Required]
          public int CategoryId { get; set; }
 
         [Required]
@@ -16,6 +17,7 @@ namespace TaskManager.Models.Category
         [MaxLength(40, ErrorMessage = "There are too many characters in this field.")]
         public string Title { get; set; }
 
+        [Required]
         public string Description { get; set; }
     }
 }

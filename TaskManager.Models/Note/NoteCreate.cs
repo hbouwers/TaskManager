@@ -16,6 +16,7 @@ namespace TaskManager.Models.Note
         [MaxLength(40, ErrorMessage = "Please enter less than 40 characters")]
         public string Text { get; set; }
 
+        [Required]
         public int ActivityId { get; set; }
     }
 }
