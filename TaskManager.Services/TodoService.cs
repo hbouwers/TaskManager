@@ -58,6 +58,49 @@ namespace TaskManager.Services
             }
         }
 
+        public IEnumerable<TodoListItem> GetIncompleteTodos()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Todos
+                    .Where(e => e.UserId == _userId && e.Complete ==false)
+                    .Select(
+                        e =>
+                        new TodoListItem
+                        {
+                            TodoId = e.TodoId,
+                            Title = e.Activity.Title,
+                            DueDate = e.DueDate,
+                            Complete = e.Complete,
+                        }
+                        );
+                return query.ToArray();
+            }
+        }
+        public IEnumerable<TodoListItem> GetTodaysTodos()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Todos
+                    .Where(e => e.UserId == _userId && e.DueDate == DateTime.Today)
+                    .Select(
+                        e =>
+                        new TodoListItem
+                        {
+                            TodoId = e.TodoId,
+                            Title = e.Activity.Title,
+                            DueDate = e.DueDate,
+                            Complete = e.Complete,
+                        }
+                        );
+                return query.ToArray();
+            }
+        }
+
         public TodoDetail GetTodoById(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -78,7 +121,7 @@ namespace TaskManager.Services
             }
         }
 
-        [Route("api/Todo/UpdateTodoId/{id}")]
+        
         public bool UpdateTodo(TodoEdit model)
         {
             using (var ctx = new ApplicationDbContext())
