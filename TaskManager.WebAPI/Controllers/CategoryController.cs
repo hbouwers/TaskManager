@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -11,74 +12,87 @@ namespace TaskManager.WebAPI.Controllers
 {
     public class CategoryController : ApiController
     {
-        private readonly CategoryService _service = new CategoryService();
-
-        public IHttpActionResult Post([FromBody] CategoryCreate category)
+        /// <summary>
+        /// Create a Category
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns></returns>
+        public IHttpActionResult Post(CategoryCreate category)
         {
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
-            if (category is null)
-            {
-                return BadRequest();
-            }
-            if (!_service.CreateCategory(category))
-            {
+
+            var service = CreateCategoryService();
+
+            if (!service.CreateCategory(category))
                 return InternalServerError();
-            }
+
             return Ok();
         }
+        /// <summary>
+        /// Get All Categories
+        /// </summary>
+        /// <returns></returns>
         public IHttpActionResult Get()
         {
-            var categories = _service.GetCategories();
-            if (categories is null)
-            {
-                return InternalServerError();
-            }
-            return Ok(categories);
+            CategoryService CategoryService = CreateCategoryService();
+            var category = CategoryService.GetCategories();
+            return Ok(category);
         }
+        /// <summary>
+        /// Get Category by CategoryId
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult Get(int id)
         {
-            var category = _service.GetCategoryById(id);
+            var categoryService = CreateCategoryService();
+            var category = categoryService.GetCategoryById(id);
             if (category is null)
             {
                 return InternalServerError();
             }
             return Ok(category);
         }
-
+        /// <summary>
+        /// Update a Category
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns></returns>
         public IHttpActionResult Put(CategoryEdit category)
         {
-            if (category is null)
-            {
-                return BadRequest();
-            }
-
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
 
-            if (!_service.UpdateCategory(category))
+            var service = CreateCategoryService();
+
+            if (!service.UpdateCategory(category))
+            {
+                return InternalServerError();
+            }
+            return Ok();
+        }
+        /// <summary>
+        /// Delete Category by CategoryId
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public IHttpActionResult Delete(int Id)
+        {
+            var service = CreateCategoryService();
+
+            if (!service.DeleteCategory(Id))
             {
                 return InternalServerError();
             }
 
             return Ok();
         }
-
-        public IHttpActionResult Delete(int Id)
+        private CategoryService CreateCategoryService()
         {
-            if (Id < 1)
-            {
-                return BadRequest("Value cannot be less than one.");
-            }
-            if (!_service.DeleteCategory(Id))
-            {
-                return InternalServerError();
-            }
-            return Ok();
+           // var userId = Guid.Parse(User.Identity.GetUserId());
+            var CategoryService = new CategoryService();
+            return CategoryService;
         }
     }
 }

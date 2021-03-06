@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskManager.Models.Todo;
 using TaskManager.Data;
+using System.Web.Http;
 
 namespace TaskManager.Services
 {
@@ -48,6 +49,7 @@ namespace TaskManager.Services
                         new TodoListItem
                         {
                             TodoId = e.TodoId,
+                            Title = e.Activity.Title,
                             DueDate = e.DueDate,
                             Complete = e.Complete,
                         }
@@ -55,6 +57,49 @@ namespace TaskManager.Services
                 return query.ToArray();
             }
         }
+
+        public IEnumerable<TodoListItem> GetIncompleteTodos()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Todos
+                    .Where(e => e.UserId == _userId && e.Complete ==false)
+                    .Select(
+                        e =>
+                        new TodoListItem
+                        {
+                            TodoId = e.TodoId,
+                            Title = e.Activity.Title,
+                            DueDate = e.DueDate,
+                            Complete = e.Complete,
+                        }
+                        );
+                return query.ToArray();
+            }
+        }
+        //public IEnumerable<TodoListItem> GetTodaysTodos()
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var query =
+        //            ctx
+        //            .Todos
+        //            .Where(e => e.UserId == _userId && e.DueDate.CompareTo(DateTime.Now, ) >1)
+        //            .Select(
+        //                e =>
+        //                new TodoListItem
+        //                {
+        //                    TodoId = e.TodoId,
+        //                    Title = e.Activity.Title,
+        //                    DueDate = e.DueDate,
+        //                    Complete = e.Complete,
+        //                }
+        //                );
+        //        return query.ToArray();
+        //    }
+        //}
 
         public TodoDetail GetTodoById(int id)
         {
@@ -68,13 +113,15 @@ namespace TaskManager.Services
                     new TodoDetail
                     {
                         TodoId = entity.TodoId,
+                        Title = entity.Activity.Title,
+                        Description = entity.Activity.Description,
                         DueDate = entity.DueDate,
                         Complete = entity.Complete
                     };
             }
         }
 
-        // add activity
+        
         public bool UpdateTodo(TodoEdit model)
         {
             using (var ctx = new ApplicationDbContext())

@@ -14,8 +14,7 @@ namespace TaskManager.Models.Todo
         [Required]
         public DateTime DueDate { get; set; }
 
-        [ForeignKey(nameof(Activity))]
+        [Required]
         public int ActivityId { get; set; }
-        public virtual Data.Activity Activity { get; set; }
     }
 }
