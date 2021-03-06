@@ -54,3 +54,4 @@ You can rename the current file by clicking the file name in the navigation bar 
  - https://zoom.us/rec/play/8jjfXEosuWooDztNNAvqNRSJfA0vWMrXPy3dH1UyIesCx-8OnkIh7NvBpiRaUyF1LWqzGZX71IrSG-jI.oE7GhlLk0rPvIdnn?continueMode=true&_x_zm_rtaid=VHk_XDYMR82iEBgcKPbqpQ.1613236523521.a83ab7eafbec05edecad1562ee85abbc&_x_zm_rhtaid=345
  - https://www.entityframeworktutorial.net/code-first/configure-one-to-one-relationship-in-code-first.aspx
  - https://stackoverflow.com/questions/4865873/the-alter-table-statement-conflicted-with-the-foreign-key-constrain
+ - https://coderwall.com/p/sqmrog/3-easy-steps-to-create-webapi-documentations
