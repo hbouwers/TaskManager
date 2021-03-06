@@ -13,7 +13,12 @@ namespace TaskManager.WebAPI.Controllers
 {
     [Authorize]
     public class ActivityController : ApiController
-    {       
+    {    
+        /// <summary>
+        /// Create an Activity
+        /// </summary>
+        /// <param name="activity"></param>
+        /// <returns></returns>
         public IHttpActionResult Post(ActivityCreate activity)
         {
             if (!ModelState.IsValid)
@@ -27,20 +32,32 @@ namespace TaskManager.WebAPI.Controllers
             return Ok();
         }
        
+        /// <summary>
+        /// Get all Activities
+        /// </summary>
+        /// <returns></returns>
         public IHttpActionResult Get()
             {
                 ActivityService activityService = CreateActivityService();
                 var activity = activityService.GetActivities();
                 return Ok(activity);
             }
-
+        /// <summary>
+        /// Get Activity by ActivityId
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult Get(int id)
         {
             ActivityService activityService = CreateActivityService();
             var activity = activityService.GetActivityById(id);
             return Ok(activity);
         }
-
+        /// <summary>
+        /// Update an Activity
+        /// </summary>
+        /// <param name="activity"></param>
+        /// <returns></returns>
         public IHttpActionResult Put(ActivityEdit activity)
         {
             if (!ModelState.IsValid)
@@ -53,7 +70,11 @@ namespace TaskManager.WebAPI.Controllers
 
             return Ok();
         }
-
+        /// <summary>
+        /// Delete an Activity by ActivityId
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IHttpActionResult Delete(int id)
         {
             var service = CreateActivityService();
