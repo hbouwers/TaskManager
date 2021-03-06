@@ -46,6 +46,7 @@ namespace TaskManager.Services
                         e =>
                         new NoteListItem
                         {
+                            ActivityId = e.ActivityId,
                             NoteId = e.NoteId,
                             Text = e.Text,
                         }

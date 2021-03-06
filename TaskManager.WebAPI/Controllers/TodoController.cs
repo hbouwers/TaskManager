@@ -39,13 +39,13 @@ namespace TaskManager.WebAPI.Controllers
         /// </summary>
         /// <returns></returns>
         /// 
-        [Route("api/Todo/GetTodaysTodos")]
-        public IHttpActionResult GetTodaysTodos()
-        {
-            TodoService todoService = CreateTodoService();
-            var todos = todoService.GetTodaysTodos();
-            return Ok(todos);
-        }
+        //[Route("api/Todo/GetTodaysTodos")]
+        //public IHttpActionResult GetTodaysTodos()
+        //{
+        //    TodoService todoService = CreateTodoService();
+        //    var todos = todoService.GetTodaysTodos();
+        //    return Ok(todos);
+        //}
         /// <summary>
         /// Create a Todo
         /// </summary>
@@ -80,7 +80,7 @@ namespace TaskManager.WebAPI.Controllers
         /// <param name="todo"></param>
         /// <returns></returns>
         /// 
-        [Route("api/Todo/UpdateTodoId/{id}")]
+       // [Route("api/Todo/UpdateTodoId/{id}")]
         public IHttpActionResult Put(TodoEdit todo)
         {
             if (!ModelState.IsValid)
