@@ -9,10 +9,11 @@ namespace TaskManager.Models.Activity
 {
    public class ActivityEdit
     {
+        [Required]
         public int ActivityId { get; set; }
-                
+        [Required]        
         public string Title { get; set; }
-                
+        [Required]        
         public string Description { get; set; }
     }
 }
